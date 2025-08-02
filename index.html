@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plantilla — Abogado | Bootstrap 5.3.x</title>
+  <meta name="description" content="Despacho jurídico profesional. Asesoría en derecho laboral, civil, familia, penal, notarial y contratos. Agenda tu consulta." />
+
+  <!-- Bootstrap CSS (cambia 5.3.7 por 5.3.7 si está disponible) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons (opcional) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --brand:#0d3b66; /* Azul sobrio */
+      --brand-2:#f4d35e; /* Dorado suave para acentos */
+      --text:#1f2937;
+    }
+    body{ color:var(--text); }
+    .navbar{ box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .navbar .nav-link{ font-weight:500; }
+    .btn-brand{ background:var(--brand); color:#fff; }
+    .btn-brand:hover{ background:#082541; color:#fff; }
+    .btn-outline-brand{ border:1px solid var(--brand); color:var(--brand); }
+    .btn-outline-brand:hover{ background:var(--brand); color:#fff; }
+
+    /* Hero */
+    #inicio{
+      background: linear-gradient(180deg, rgba(13,59,102,.08), rgba(13,59,102,0));
+    }
+    .hero-badge{
+      display:inline-block; padding:.35rem .6rem; border-radius:999px;
+      background: #eaf2fb; color: var(--brand); font-size:.875rem;
+    }
+
+    /* Sección genérica */
+    section{ padding: 72px 0; }
+    .section-title{ font-weight:800; letter-spacing:.2px; }
+
+    /* Tarjetas de servicios */
+    .service-card{ height:100%; transition: transform .2s ease, box-shadow .2s ease; }
+    .service-card:hover{ transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+
+    /* Testimonios */
+    .quote{ font-style:italic; }
+
+    /* Footer */
+    footer{ background:#0b2239; color:#c9d6e5; }
+    footer a{ color:#c9d6e5; text-decoration:none; }
+    footer a:hover{ color:#fff; }
+
+    /* Utilidades pequeñas */
+    .required::after{ content:" *"; color:#c00; }
+  </style>
+
+  <!-- Datos estructurados (LegalService) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LegalService",
+    "name":"Despacho Jurídico",
+    "areaServed":"Costa Rica",
+    "url":"https://ejemplo.com",
+    "logo":"https://ejemplo.com/logo.png",
+    "telephone":"+506 0000 0000",
+    "address":{"@type":"PostalAddress","addressCountry":"CR"},
+    "priceRange":"$$"
+  }
+  </script>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0">
+
+<!-- NAVBAR -->
+<nav id="mainNav" class="navbar navbar-expand-lg bg-white sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#inicio">
+      <img src="/logoblack.png" alt="Logo" height="80">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        <li class="nav-item ms-lg-3">
+          <!-- Botón de traducción -->
+          <a class="nav-link translate-btn" href="#" id="translate-btn" aria-label="Traducir">
+            <i class="fas fa-language" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Google Translate Widget -->
+  <div id="google_translate_element" style="display: none; position: absolute; top: 100%; right: 10px; z-index: 9999;"></div>
+</nav>
+
+<!-- Google Translate Script -->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'es',
+      includedLanguages: 'en,es,fr,de,it,pt',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+
+  (function () {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(script);
+  })();
+
+  // Toggle del widget
+  document.addEventListener('DOMContentLoaded', function () {
+    var translateBtn = document.getElementById('translate-btn');
+    var translateElement = document.getElementById('google_translate_element');
+    translateBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (translateElement.style.display === 'none' || translateElement.style.display === '') {
+        translateElement.style.display = 'block';
+      } else {
+        translateElement.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
+  <!-- HERO -->
+  <header id="inicio" class="py-5">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="hero-badge mb-3">Defensa de tus derechos • Atención personalizada</span>
+          <h1 class="display-5 fw-bold mt-2">Asesoría legal clara, estratégica y humana.</h1>
+          <p class="lead mt-3">Acompaño tu caso de principio a fin con transparencia, ética profesional y enfoque en resultados.</p>
+          <div class="d-flex gap-2 mt-4">
+            <a href="#contacto" class="btn btn-brand btn-lg">Agendar consulta</a>
+            <a href="#servicios" class="btn btn-outline-brand btn-lg">Ver servicios</a>
+          </div>
+          <ul class="list-unstyled mt-4 small text-secondary">
+            <li><i class="bi bi-check2-circle"></i> Colegiatura vigente • Facturación</li>
+            <li><i class="bi bi-check2-circle"></i> Atención presencial y online</li>
+            <li><i class="bi bi-check2-circle"></i> Confidencialidad garantizada</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm">
+            <!-- Imagen/Video de portada (placeholder) -->
+            <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="Video institucional" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Servicios</h2>
+        <p class="text-secondary mb-0">Soluciones legales a medida para personas y empresas.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Servicio -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card service-card h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-briefcase fs-3 me-2 text-primary"></i>
+                <h5 class="card-title mb-0">Derecho Laboral</h5>
+              </div>
+              <p class="card-text">Despidos, cálculo de prestaciones, acoso laboral, conciliación y procesos judiciales.</p>
+              <a href="#contacto" class="btn btn-outline-brand btn-sm">Solicitar asesoría</a>
+            </div>
+          </div>
+        </div>
+        <!-- Servicio -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card service-card h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-house fs-3 me-2 text-primary"></i>
+                <h5 class="card-title mb-0">Derecho Civil</h5>
+              </div>
+              <p class="card-text">Contratos, cobros, responsabilidad civil, arrendamientos y conflictos patrimoniales.</p>
+              <a href="#contacto" class="btn btn-outline-brand btn-sm">Solicitar asesoría</a>
+            </div>
+          </div>
+        </div>
+        <!-- Servicio -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card service-card h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-people fs-3 me-2 text-primary"></i>
+                <h5 class="card-title mb-0">Familia</h5>
+              </div>
+              <p class="card-text">Pensión alimentaria, guarda, divorcios, régimen de visitas y medidas de protección.</p>
+              <a href="#contacto" class="btn btn-outline-brand btn-sm">Solicitar asesoría</a>
+            </div>
+          </div>
+        </div>
+        <!-- Servicio -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card service-card h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-shield-lock fs-3 me-2 text-primary"></i>
+                <h5 class="card-title mb-0">Penal</h5>
+              </div>
+              <p class="card-text">Defensa técnica, denuncias, medidas cautelares y representación en juicio.</p>
+              <a href="#contacto" class="btn btn-outline-brand btn-sm">Solicitar asesoría</a>
+            </div>
+          </div>
+        </div>
+        <!-- Servicio -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card service-card h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-file-earmark-text fs-3 me-2 text-primary"></i>
+                <h5 class="card-title mb-0">Notarial</h5>
+              </div>
+              <p class="card-text">Protocolización, certificaciones, traspasos, hipotecas, sociedades y poderes.</p>
+              <a href="#contacto" class="btn btn-outline-brand btn-sm">Solicitar asesoría</a>
+            </div>
+          </div>
+        </div>
+        <!-- Servicio -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card service-card h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-journal-text fs-3 me-2 text-primary"></i>
+                <h5 class="card-title mb-0">Contratos</h5>
+              </div>
+              <p class="card-text">Redacción, revisión, negociación y due diligence para operaciones seguras.</p>
+              <a href="#contacto" class="btn btn-outline-brand btn-sm">Solicitar asesoría</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="#contacto" class="btn btn-brand">Agendar consulta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="bg-light">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-5">
+          <img src="https://images.unsplash.com/photo-1523246191815-44b2ce62c3fa?q=80&w=1200&auto=format&fit=crop" class="img-fluid rounded-3 shadow-sm" alt="Abogado en su despacho">
+        </div>
+        <div class="col-lg-7">
+          <h2 class="section-title">Sobre el despacho</h2>
+          <p>Más de <strong>10 años de experiencia</strong> brindando asesoría y representación legal con enfoque práctico y resultados medibles.</p>
+          <ul class="list-unstyled">
+            <li><i class="bi bi-award"></i> Colegiado N.º <strong>XXXX</strong></li>
+            <li><i class="bi bi-mortarboard"></i> Formación: UCR / ULatina (ejemplo)</li>
+            <li><i class="bi bi-shield-check"></i> Ética, confidencialidad y trato humano</li>
+            <li><i class="bi bi-laptop"></i> Consultas presenciales y virtuales</li>
+          </ul>
+          <a href="#contacto" class="btn btn-outline-brand">Solicitar una reunión</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Testimonios</h2>
+        <p class="text-secondary mb-0">La confianza de nuestros clientes nos respalda.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="quote">“Recibí asesoría clara y honesta desde el primer día. Ganamos el caso laboral.”</p>
+              <div class="small text-muted">— M. Rodríguez</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="quote">“Excelente manejo de tiempos y estrategia. Recomendado para contratos.”</p>
+              <div class="small text-muted">— M. Gómez</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="quote">“Empatía y profesionalismo. Me sentí acompañado en todo momento.”</p>
+              <div class="small text-muted">— L. Vargas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="#contacto" class="btn btn-brand">Quiero mi consulta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="bg-light">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Artículos</h2>
+        <p class="text-secondary mb-0">Actualidad legal y consejos prácticos.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop" alt="Imagen artículo">
+            <div class="card-body">
+              <h5 class="card-title">Guía básica de despidos y prestaciones</h5>
+              <p class="card-text">Qué hacer ante un despido y cómo calcular montos clave.</p>
+              <a href="#" class="btn btn-outline-brand btn-sm">Leer más</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop" alt="Imagen artículo">
+            <div class="card-body">
+              <h5 class="card-title">Arrendamientos: derechos y obligaciones</h5>
+              <p class="card-text">Claves para propietarios e inquilinos al firmar un contrato.</p>
+              <a href="#" class="btn btn-outline-brand btn-sm">Leer más</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1200&auto=format&fit=crop" alt="Imagen artículo">
+            <div class="card-body">
+              <h5 class="card-title">Cómo proteger tu empresa con contratos</h5>
+              <p class="card-text">Cláusulas esenciales para evitar riesgos y conflictos futuros.</p>
+              <a href="#" class="btn btn-outline-brand btn-sm">Leer más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Contacto</h2>
+        <p class="text-secondary mb-0">Con gusto atenderé tu caso. Respuesta en menos de 24 horas.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label required">Nombre</label>
+                <input type="text" class="form-control" required>
+                <div class="invalid-feedback">Escribe tu nombre.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label required">Correo</label>
+                <input type="email" class="form-control" required>
+                <div class="invalid-feedback">Correo inválido.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Teléfono</label>
+                <input type="tel" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label required">Asunto</label>
+                <input type="text" class="form-control" required>
+                <div class="invalid-feedback">Indica el asunto.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label required">Mensaje</label>
+                <textarea class="form-control" rows="5" required></textarea>
+                <div class="invalid-feedback">Cuéntame brevemente tu caso.</div>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="privacy" required>
+                  <label class="form-check-label" for="privacy">
+                    Acepto la <a href="#" class="text-decoration-underline">política de privacidad</a>.
+                  </label>
+                  <div class="invalid-feedback">Debes aceptar para continuar.</div>
+                </div>
+              </div>
+              <div class="col-12 d-grid d-sm-block">
+                <button class="btn btn-brand btn-lg" type="submit">Enviar</button>
+              </div>
+            </div>
+          </form>
+          <p class="small text-secondary mt-3">También puedes escribir por WhatsApp al <a href="https://wa.me/50600000000" target="_blank" rel="noopener">+506 0000-0000</a>.</p>
+        </div>
+        <div class="col-lg-5">
+          <div class="p-3 border rounded-3 h-100">
+            <h5 class="mb-3">Información</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="bi bi-geo-alt"></i> San José, Costa Rica (ejemplo)</li>
+              <li class="mb-2"><i class="bi bi-telephone"></i> +506 0000-0000</li>
+              <li class="mb-2"><i class="bi bi-envelope"></i> contacto@ejemplo.com</li>
+              <li class="mb-2"><i class="bi bi-clock"></i> Lun–Vie: 9:00–18:00</li>
+            </ul>
+            <div class="ratio ratio-4x3 rounded-3 overflow-hidden">
+              <!-- Mapa (placeholder) -->
+              <iframe src="https://maps.google.com/maps?q=San%20Jos%C3%A9%2C%20Costa%20Rica&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+<!-- FOOTER -->
+<footer class=" text-light pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row gy-4 justify-content-center text-center">
+      <!-- Nombre / Descripción breve -->
+      <div class="col-md-4">
+        <a class="navbar-brand d-block mb-2" href="#inicio">
+          <img src="/logowhite.png" alt="Logo" height="120">
+        </a>
+        <p class="text-muted small">Asesoría legal personalizada con ética, confidencialidad y enfoque en resultados. Atención en todo Costa Rica.</p>
+      </div>
+
+      <!-- Enlaces útiles -->
+      <div class="col-md-4">
+        <h6 class="fw-semibold mb-3">Enlaces rápidos</h6>
+        <ul class="list-unstyled small">
+          <li><a href="#inicio" class="text-decoration-none text-light d-block">Inicio</a></li>
+          <li><a href="#servicios" class="text-decoration-none text-light d-block">Servicios</a></li>
+          <li><a href="#sobre" class="text-decoration-none text-light d-block">Sobre</a></li>
+          <li><a href="#contacto" class="text-decoration-none text-light d-block">Contacto</a></li>
+          <li><a href="#" class="text-decoration-none text-light d-block">Política de privacidad</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto / Redes -->
+      <div class="col-md-4">
+        <h6 class="fw-semibold mb-3">Contacto</h6>
+        <p class="small mb-1"><i class="bi bi-telephone"></i> +506 0000-0000</p>
+        <p class="small mb-1"><i class="bi bi-envelope"></i> contacto@ejemplo.com</p>
+        <p class="small mb-3"><i class="bi bi-geo-alt"></i> San José, Costa Rica</p>
+        <div class="d-flex justify-content-center gap-3 fs-5">
+          <a href="#" class="text-light"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="text-light"><i class="bi bi-twitter-x"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-4 border-light">
+
+    <div class="d-flex flex-column flex-md-row justify-content-center text-center gap-3 small">
+      <div>© <span id="year"></span> Despacho Jurídico. Todos los derechos reservados.</div>
+      <div><a href="#inicio" class="text-light text-decoration-none">Volver arriba ↑</a></div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/50600000000?text=Hola,%20quisiera%20más%20información."
+   class="whatsapp-float"
+   target="_blank" rel="noopener">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<!-- Estilos del botón -->
+<style>
+  /* Ajusta los valores que necesites */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;   /* distancia desde la parte inferior */
+    right: 20px;    /* distancia desde el borde derecho */
+    width: 60px;
+    height: 60px;
+    background: #25d366;          /* color oficial de WhatsApp */
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;              /* tamaño del ícono */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    z-index: 1000;                /* por encima de otros elementos */
+    transition: transform 0.2s;
+    text-decoration: none;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    color: #fff;                  /* mantiene el color del ícono */
+  }
+</style>
+
+
+  <!-- Bootstrap JS (bundle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Validación Bootstrap
+    (function () {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) { event.preventDefault(); event.stopPropagation(); }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+
+    // Scroll suave para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
