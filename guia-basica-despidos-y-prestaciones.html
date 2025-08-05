@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plantilla — Abogado | Bootstrap 5.3.x</title>
+  <meta name="description" content="Despacho jurídico profesional. Asesoría en derecho laboral, civil, familia, penal, notarial y contratos. Agenda tu consulta." />
+
+  <!-- Bootstrap CSS (cambia 5.3.7 por 5.3.7 si está disponible) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons (opcional) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    :root{
+      --brand:#0d3b66; /* Azul sobrio */
+      --brand-2:#f4d35e; /* Dorado suave para acentos */
+      --text:#1f2937;
+    }
+    body{ color:var(--text); background-color: #fffefe;}
+    .navbar{ box-shadow: 0 2px 12px rgba(0,0,0,.06); background-color: #fffefe; }
+    .navbar .nav-link{ font-weight:500; }
+    .btn-brand{ background:var(--brand); color:#fff; }
+    .btn-brand:hover{ background:#082541; color:#fff; }
+    .btn-outline-brand{ border:1px solid var(--brand); color:var(--brand); }
+    .btn-outline-brand:hover{ background:var(--brand); color:#fff; }
+
+
+    /* Hero */
+    #inicio{
+      background: linear-gradient(180deg, rgba(48, 84, 118, 0.08), rgba(13,59,102,0));
+    }
+    .hero-badge{
+      display:inline-block; padding:.35rem .6rem; border-radius:999px;
+      background: #eaf2fb; color: var(--brand); font-size:.875rem;
+    }
+
+    /* Sección genérica */
+    section{ padding: 72px 0; }
+    .section-title{ font-weight:800; letter-spacing:.2px; }
+
+    /* Tarjetas de servicios */
+    .service-card{ height:100%; transition: transform .2s ease, box-shadow .2s ease; }
+    .service-card:hover{ transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+
+    /* Testimonios */
+    .quote{ font-style:italic; }
+
+    /* Footer */
+    footer{ background:#0b2239; color:#fffefe; }
+    footer a{ color:#c9d6e5; text-decoration:none; }
+    footer a:hover{ color:#fff; }
+
+    /* Utilidades pequeñas */
+    .required::after{ content:" *"; color:#c00; }
+
+    #sobre {
+      background-color: #fffefe; /* Gris claro */
+    }
+  </style>
+
+  <!-- Datos estructurados (LegalService) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LegalService",
+    "name":"Despacho Jurídico",
+    "areaServed":"Costa Rica",
+    "url":"https://ejemplo.com",
+    "logo":"https://ejemplo.com/logo.png",
+    "telephone":"+506 0000 0000",
+    "address":{"@type":"PostalAddress","addressCountry":"CR"},
+    "priceRange":"$$"
+  }
+  </script>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0">
+
+<!-- NAVBAR -->
+<nav id="mainNav" class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="/index.html">
+      <img src="./assets/logoblack.png" alt="Logo" height="120">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        <li class="nav-item ms-lg-3">
+          <!-- Botón de traducción -->
+          <a class="nav-link translate-btn" href="#" id="translate-btn" aria-label="Traducir">
+            <i class="fas fa-language" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Google Translate Widget -->
+  <div id="google_translate_element" style="display: none; position: absolute; top: 100%; right: 10px; z-index: 9999;"></div>
+</nav>
+
+<!-- Google Translate Script -->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'es',
+      includedLanguages: 'en,es,fr,de,it,pt',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+
+  (function () {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(script);
+  })();
+
+  // Toggle del widget
+  document.addEventListener('DOMContentLoaded', function () {
+    var translateBtn = document.getElementById('translate-btn');
+    var translateElement = document.getElementById('google_translate_element');
+    translateBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (translateElement.style.display === 'none' || translateElement.style.display === '') {
+        translateElement.style.display = 'block';
+      } else {
+        translateElement.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
+
+
+<article class="blog-post container py-5" style="margin-top: 50px;">
+
+  <!-- Portada -->
+  <header class="text-center mb-4">
+
+    <h1 class="fw-bold mb-1">Guía básica de despidos y prestaciones</h1>
+    <p class="text-muted small mb-0">
+      Publicado el <time datetime="2025-08-04">4&nbsp;ago&nbsp;2025</time>
+    </p>
+  </header>
+
+  <!-- Contenido condensado -->
+  <section class="mb-3">
+  <!-- ============ Texto + nota lateral + imagen ============ -->
+<div class="d-md-flex align-items-start gap-4"><!-- fila flexible -->
+
+  <!-- Columna principal -->
+  <div class="flex-grow-1">
+    <p>
+      En Costa Rica existen dos tipos de terminación: <strong>despido con responsabilidad patronal</strong>,
+      cuando el patrón finaliza el contrato sin causa grave y debe pagar preaviso y cesantía, y
+      <strong>despido sin responsabilidad patronal</strong>, cuando existe justa causa (art. 81) y esos rubros no se generan.
+      En ambos casos el trabajador conserva derechos inmediatos como salarios pendientes, vacaciones no gozadas, aguinaldo
+      proporcional y una carta de despido; todo reclamo prescribe al año (art. 603).
+    </p>
+
+    <p>
+      Las prestaciones se calculan sobre el salario: preaviso de una semana hasta un mes (art. 28), cesantía de siete días
+      por año laborado hasta ocho años (art. 29) y vacaciones pendientes (1,3 días por mes). Ejemplo práctico: con un salario
+      promedio de ₡600&nbsp;000, tres años y cuatro meses de servicio y cinco días de vacaciones sin disfrutar, el total estimado
+      asciende a unos <strong>₡1 366 000</strong> entre preaviso, cesantía, vacaciones y aguinaldo proporcional.
+    </p>
+
+    <p>
+      Para reclamar lo adeudado se aconseja primero intentar conciliación ante el MTSS; si fracasa, presentar demanda ordinaria
+      laboral y, de ser preciso, solicitar embargo preventivo. Reunir contratos, planillas y correos respalda la gestión.
+      Conocer cálculos y plazos fortalece tu negociación; ante cualquier duda o negativa patronal, busca asesoría especializada.
+    </p>
+  </div>
+
+  <!-- Columna derecha: imagen + nota -->
+  <aside class="d-flex flex-column align-items-stretch" style="max-width: 280px;">
+
+
+    <!-- Nota lateral -->
+    <div class="bg-light border rounded-3 p-3 small flex-grow-1">
+      <h6 class="fw-semibold mb-2"><i class="bi bi-lightbulb"></i> Dato clave</h6>
+      <p class="mb-0">
+        El monto de <strong>cesantía</strong> usa el salario promedio de los últimos <u>6 meses</u>,
+        mientras que el <strong>preaviso</strong> parte del salario ordinario del último periodo.
+        Revisa tus planillas antes de firmar la liquidación.
+      </p>
+    </div>
+
+  </aside>
+
+</div>
+
+    <p>
+        <i>Por el Dr. Sebastián Jenkins, abogado especializado en derecho laboral y civil.</i>
+        <hr>
+        <strong>Nota:</strong> Esta guía es informativa y no sustituye asesoría legal profesional. Cada caso es único y puede requerir 
+        análisis específico según circunstancias particulares.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <div class="text-center">
+    <a href="#contacto" class="btn btn-brand btn-sm">Quiero agendar una asesoría</a>
+  </div>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- FOOTER -->
+<footer class=" text-light pt-5 pb-4 ">
+  <div class="container">
+    <div class="row gy-4 justify-content-center text-center">
+      <!-- Nombre / Descripción breve -->
+      <div class="col-md-4">
+        <a class="navbar-brand d-block mb-2" href="/index.html">
+          <img src="./assets/logowhite.png" alt="Logo" height="120">
+        </a>
+        <p class="text-muted small">Asesoría legal personalizada con ética, confidencialidad y enfoque en resultados. Atención en todo Costa Rica.</p>
+      </div>
+
+      <!-- Enlaces útiles -->
+      <div class="col-md-4">
+        <h6 class="fw-semibold mb-3">Enlaces rápidos</h6>
+        <ul class="list-unstyled small">
+          <li><a href="#inicio" class="text-decoration-none text-light d-block">Inicio</a></li>
+          <li><a href="#servicios" class="text-decoration-none text-light d-block">Servicios</a></li>
+          <li><a href="#sobre" class="text-decoration-none text-light d-block">Sobre</a></li>
+          <li><a href="#contacto" class="text-decoration-none text-light d-block">Contacto</a></li>
+          <li><a href="#" class="text-decoration-none text-light d-block">Política de privacidad</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto / Redes -->
+      <div class="col-md-4">
+        <h6 class="fw-semibold mb-3">Contacto</h6>
+        <p class="small mb-1"><i class="bi bi-telephone"></i> +506 0000-0000</p>
+        <p class="small mb-1"><i class="bi bi-envelope"></i> contacto@ejemplo.com</p>
+        <p class="small mb-3"><i class="bi bi-geo-alt"></i> San José, Costa Rica</p>
+        <div class="d-flex justify-content-center gap-3 fs-5">
+          <a href="#" class="text-light"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="text-light"><i class="bi bi-twitter-x"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-4 border-light">
+
+    <div class="d-flex flex-column flex-md-row justify-content-center text-center gap-3 small">
+      <div>© <span id="year"></span><a href="https://www.nativainnovations.com/" target="_blank"> Nativa Innovations Web Development Agency.</a>  Todos los derechos reservados.</div>
+      <div><a href="#inicio" class="text-light text-decoration-none">Volver arriba ↑</a></div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/50600000000?text=Hola,%20quisiera%20más%20información."
+   class="whatsapp-float"
+   target="_blank" rel="noopener">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<!-- Estilos del botón -->
+<style>
+  /* Ajusta los valores que necesites */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;   /* distancia desde la parte inferior */
+    right: 20px;    /* distancia desde el borde derecho */
+    width: 60px;
+    height: 60px;
+    background: #25d366;          /* color oficial de WhatsApp */
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;              /* tamaño del ícono */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    z-index: 1000;                /* por encima de otros elementos */
+    transition: transform 0.2s;
+    text-decoration: none;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    color: #fff;                  /* mantiene el color del ícono */
+  }
+</style>
+
+
+  <!-- Bootstrap JS (bundle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Validación Bootstrap
+    (function () {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) { event.preventDefault(); event.stopPropagation(); }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+
+    // Scroll suave para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
