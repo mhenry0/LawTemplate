@@ -11,6 +11,8 @@
   <!-- Bootstrap Icons (opcional) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <style>
     :root{
@@ -18,17 +20,18 @@
       --brand-2:#f4d35e; /* Dorado suave para acentos */
       --text:#1f2937;
     }
-    body{ color:var(--text); }
-    .navbar{ box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    body{ color:var(--text); background-color: #fffefe;}
+    .navbar{ box-shadow: 0 2px 12px rgba(0,0,0,.06); background-color: #fffefe; }
     .navbar .nav-link{ font-weight:500; }
     .btn-brand{ background:var(--brand); color:#fff; }
     .btn-brand:hover{ background:#082541; color:#fff; }
     .btn-outline-brand{ border:1px solid var(--brand); color:var(--brand); }
     .btn-outline-brand:hover{ background:var(--brand); color:#fff; }
 
+
     /* Hero */
     #inicio{
-      background: linear-gradient(180deg, rgba(13,59,102,.08), rgba(13,59,102,0));
+      background: linear-gradient(180deg, rgba(48, 84, 118, 0.08), rgba(13,59,102,0));
     }
     .hero-badge{
       display:inline-block; padding:.35rem .6rem; border-radius:999px;
@@ -47,12 +50,16 @@
     .quote{ font-style:italic; }
 
     /* Footer */
-    footer{ background:#0b2239; color:#c9d6e5; }
+    footer{ background:#0b2239; color:#fffefe; }
     footer a{ color:#c9d6e5; text-decoration:none; }
     footer a:hover{ color:#fff; }
 
     /* Utilidades pequeñas */
     .required::after{ content:" *"; color:#c00; }
+
+    #sobre {
+      background-color: #fffefe; /* Gris claro */
+    }
   </style>
 
   <!-- Datos estructurados (LegalService) -->
@@ -73,10 +80,10 @@
 <body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0">
 
 <!-- NAVBAR -->
-<nav id="mainNav" class="navbar navbar-expand-lg bg-white sticky-top">
+<nav id="mainNav" class="navbar navbar-expand-lg sticky-top">
   <div class="container">
     <a class="navbar-brand" href="#inicio">
-      <img src="./assets/logoblack.png" alt="Logo" height="80">
+      <img src="./assets/logoblack.png" alt="Logo" height="120">
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
@@ -167,7 +174,11 @@
     </div>
   </header>
 
+
+
+
   <!-- SERVICIOS -->
+   
   <section id="servicios">
     <div class="container">
       <div class="text-center mb-4">
@@ -262,13 +273,24 @@
     </div>
   </section>
 
+
+
+
+<script>
+  AOS.init();
+</script>
   <!-- SOBRE -->
-  <section id="sobre" class="bg-light">
+           <div data-aos="zoom-in" data-aos-duration="2000">
+
+  <section id="sobre">
     <div class="container">
       <div class="row g-4 align-items-center">
+
         <div class="col-lg-5">
-          <img src="https://images.unsplash.com/photo-1523246191815-44b2ce62c3fa?q=80&w=1200&auto=format&fit=crop" class="img-fluid rounded-3 shadow-sm" alt="Abogado en su despacho">
+          <img src="./assets/abogado.jpg" class="img-fluid rounded-3 shadow-sm" alt="Abogado en su despacho" width="300" height="200" loading="lazy">
         </div>
+
+
         <div class="col-lg-7">
           <h2 class="section-title">Sobre el despacho</h2>
           <p>Más de <strong>10 años de experiencia</strong> brindando asesoría y representación legal con enfoque práctico y resultados medibles.</p>
@@ -283,6 +305,9 @@
       </div>
     </div>
   </section>
+
+</div>
+
 
   <!-- TESTIMONIOS -->
   <section id="testimonios">
@@ -326,11 +351,11 @@
   </section>
 
   <!-- BLOG -->
-  <section id="blog" class="bg-light">
+  <section id="blog" style="background-color: #0d3b66; height: 110vh;">
     <div class="container">
       <div class="text-center mb-4">
-        <h2 class="section-title">Artículos</h2>
-        <p class="text-secondary mb-0">Actualidad legal y consejos prácticos.</p>
+        <h2 class="section-title text-light">Artículos</h2>
+        <p class="text-secondary mb-0 text-light">Actualidad legal y consejos prácticos.</p>
       </div>
       <div class="row g-4">
         <div class="col-md-6 col-lg-4">
